@@ -37,6 +37,7 @@ RUN set -eux \
     && yum clean all 
 
 RUN set -eux \
+    && rpm --import https://repo.mysql.com/RPM-GPG-KEY-mysql-2022 \
     && wget -c https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm \
     && rpm -ivh mysql57-community-release-el7-11.noarch.rpm \
     && rm mysql57-community-release-el7-11.noarch.rpm \
