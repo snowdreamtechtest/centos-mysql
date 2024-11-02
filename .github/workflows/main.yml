@@ -83,7 +83,6 @@ jobs:
         uses: docker/metadata-action@v5.5.1
         with:
           images: |
-            name=snowdreamtechtest/centos-mysql,enable=true
             name=ghcr.io/snowdreamtechtest/centos-mysql,enable=true
           flavor: |
             latest=false  
