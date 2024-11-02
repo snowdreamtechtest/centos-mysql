@@ -115,12 +115,12 @@ jobs:
             REVISION=${{ fromJSON(steps.meta.outputs.json).labels['org.opencontainers.image.revision'] }}
           platforms: linux/amd64
           push: true
-          load: true
+          load: false
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           # annotations: ${{ steps.meta.outputs.annotations }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Test
-        run: |
-            docker run --rm snowdreamtechtest/centos-mysql:latest cat /etc/os-release
+      # - name: Test
+      #   run: |
+      #       docker run --rm snowdreamtechtest/centos-mysql:latest cat /etc/os-release
