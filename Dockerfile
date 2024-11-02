@@ -34,6 +34,12 @@ RUN set -eux \
     wget \
     curl \
     lsof \
+    && wget -c http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm \
+    && rpm -ivh mysql-community-release-el7-5.noarch.rpm \
+    && rm mysql-community-release-el7-5.noarch.rpm \
+    && yum -y update \
+    && yum -y install \
+    mysql-server \
     && yum clean all 
 
 COPY docker-entrypoint.sh /usr/local/bin/
