@@ -3,12 +3,17 @@ set -e
 
 # mysqld
 if [ ! -d "/var/lib/mysql/" ] || [ ! -d "/var/lib/mysql/mysql" ]; then
-    mysql_install_db --user=mysql --datadir=/var/lib/mysql
+    mysqld --initialize --user=mysql --datadir=/var/lib/mysql
 else
     echo "/var/lib/mysql exists."
 fi
 
-/usr/bin/mysqld_safe &
+/usr/sbin/mysqld --user=mysql &
+
+(
+    sleep 3
+    cat /var/log/mysqld.log
+) &
 
 # exec commands
 if [ -n "$*" ]; then
